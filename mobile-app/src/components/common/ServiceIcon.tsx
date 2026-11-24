@@ -1,6 +1,6 @@
 import { View, type ColorValue } from 'react-native';
 
-export type IconName = 'home' | 'search' | 'calendar' | 'heart' | 'user' | 'bell' | 'clean' | 'ac' | 'bolt' | 'plumbing' | 'paint' | 'garden' | 'arrow' | 'check';
+export type IconName = 'car' | 'home' | 'search' | 'calendar' | 'heart' | 'user' | 'bell' | 'clean' | 'ac' | 'bolt' | 'plumbing' | 'paint' | 'garden' | 'arrow' | 'check';
 
 /** Small, consistent line icons rendered with native views on every platform. */
 export function ServiceIcon({ name, size = 24, color = '#2563EB' }: { name: IconName; size?: number; color?: ColorValue }) {
@@ -8,6 +8,7 @@ export function ServiceIcon({ name, size = 24, color = '#2563EB' }: { name: Icon
   const box = (x: number, y: number, width: number, height: number, radius = 2) => <View style={{ position: 'absolute', left: x, top: y, width, height, borderRadius: radius, borderWidth: 1.8, borderColor: color }} />;
   let shape;
   switch (name) {
+    case 'car': shape = <>{box(2, 10, 20, 9, 3)}{box(6, 4, 12, 8, 3)}{box(5, 17, 4, 5, 2)}{box(15, 17, 4, 5, 2)}{line(5, 14, 3)}{line(16, 14, 3)}</>; break;
     case 'home': shape = <>{line(2, 7, 12, -40)}{line(10, 7, 12, 40)}{box(5, 9, 14, 12)}{box(10, 15, 4, 6)}</>; break;
     case 'search': shape = <>{box(3, 3, 14, 14, 9)}{line(15, 18, 8, 45)}</>; break;
     case 'calendar': shape = <>{box(3, 5, 18, 16, 3)}{line(4, 10, 16)}{line(5, 4, 6, 90)}{line(13, 4, 6, 90)}{box(8, 14, 3, 3, 0)}</>; break;
