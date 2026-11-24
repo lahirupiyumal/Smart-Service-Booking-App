@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    // Profiles and roles are provisioned by trusted server code, never by clients.
+    match /users/{uid} {
+      allow get: if signedIn() && request.auth.uid == uid;
+      allow list, create, update, delete: if false;
+    }
+    // Open collections only after their schema and ownership rules are implemented.
+    match /{document=**} { allow read, write: if false; }
+  }
+}

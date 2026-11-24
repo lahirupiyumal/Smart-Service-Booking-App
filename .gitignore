@@ -1,0 +1,13 @@
+node_modules/
+.expo/
+dist/
+build/
+lib/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+*.tsbuildinfo
+firebase-debug.*
+.runtimeconfig.json

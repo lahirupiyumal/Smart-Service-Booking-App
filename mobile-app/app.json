@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "Smart Service Booking",
+    "slug": "smart-service-booking",
+    "version": "0.1.0",
+    "scheme": "smartservicebooking",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "plugins": [
+      "expo-router",
+      "expo-notifications"
+    ],
+    "web": {
+      "bundler": "metro"
+    },
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
