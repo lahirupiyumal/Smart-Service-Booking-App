@@ -16,8 +16,6 @@ export const serviceImages = {
   'crop-management': require('../../../../assets/images/services/agricultural/crop-management.png'),
   'spraying': require('../../../../assets/images/services/agricultural/spraying.png'),
   'harvesting': require('../../../../assets/images/services/agricultural/harvesting.png'),
-  'machinery-repair': require('../../../../assets/images/services/agricultural/machinery-repair.png'),
-  'landscaping': require('../../../../assets/images/services/agricultural/landscaping.png'),
   'vehicle-repair': require('../../../../assets/images/services/vehicle/vehicle-repair.png'),
   'vehicle-servicing': require('../../../../assets/images/services/vehicle/vehicle-servicing.png'),
   'vehicle-washing': require('../../../../assets/images/services/vehicle/vehicle-washing.png'),

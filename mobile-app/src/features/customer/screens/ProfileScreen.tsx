@@ -17,9 +17,9 @@ export default function Profile() {
     finally { setBusy(false); }
   }
   return <Screen title="Your profile" subtitle="Customer preview">
-    <InfoCard title={loading ? 'Loading account…' : profile?.displayName || user?.email || 'Guest preview'} description={profile ? `Account role: ${profile.role}` : 'Sign in to connect your account.'} />
+    <InfoCard title={loading ? 'Loading account…' : profile?.displayName || user?.email || 'Guest preview'} description={profile ? `Account role: ${profile.role}` : 'Browse services directly from the home page.'} />
     {(error || message) && <Text accessibilityRole="alert">{message || error}</Text>}
-    {user ? <Button title="Sign out" disabled={busy} onPress={() => { void signOut(); }} /> : <Button title="Sign in" onPress={() => router.push('/(auth)/login')} />}
-    <Button title="Back to welcome" secondary onPress={() => router.replace('/')} />
+    {user && <Button title="Sign out" disabled={busy} onPress={() => { void signOut(); }} />}
+    <Button title="Back to home" secondary onPress={() => router.replace('/')} />
   </Screen>;
 }

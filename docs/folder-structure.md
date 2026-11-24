@@ -21,11 +21,6 @@ Smart-Service-Booking-App/
 │   └── tsconfig.json
 ├── mobile-app/
 │   ├── app/
-│   │   ├── (auth)/
-│   │   │   ├── _layout.tsx
-│   │   │   ├── forgot-password.tsx
-│   │   │   ├── login.tsx
-│   │   │   └── register.tsx
 │   │   ├── (customer)/
 │   │   │   ├── _layout.tsx
 │   │   │   ├── bookings.tsx
@@ -60,8 +55,6 @@ Smart-Service-Booking-App/
 │   │           │   ├── harvesting.png
 │   │           │   ├── irrigation.png
 │   │           │   ├── land-preparation.png
-│   │           │   ├── landscaping.png
-│   │           │   ├── machinery-repair.png
 │   │           │   └── spraying.png
 │   │           ├── home/
 │   │           │   ├── ac-repair.png
@@ -99,17 +92,10 @@ Smart-Service-Booking-App/
 │   │   │   └── firebase.ts
 │   │   ├── features/
 │   │   │   ├── auth/
-│   │   │   │   ├── components/
-│   │   │   │   │   └── AuthField.tsx
 │   │   │   │   ├── context/
 │   │   │   │   │   └── AuthContext.tsx
-│   │   │   │   ├── screens/
-│   │   │   │   │   └── AuthScreen.tsx
 │   │   │   │   ├── services/
-│   │   │   │   │   ├── authErrors.ts
 │   │   │   │   │   └── authService.ts
-│   │   │   │   ├── styles/
-│   │   │   │   │   └── AuthScreen.styles.ts
 │   │   │   │   └── types/
 │   │   │   │       └── user.ts
 │   │   │   ├── bookings/
@@ -146,7 +132,6 @@ Smart-Service-Booking-App/
 │   │   │       └── types/
 │   │   │           └── category.ts
 │   │   ├── navigation/
-│   │   │   ├── AuthNavigator.tsx
 │   │   │   ├── CustomerTabs.tsx
 │   │   │   ├── EntryRedirect.tsx
 │   │   │   ├── ProviderTabs.tsx

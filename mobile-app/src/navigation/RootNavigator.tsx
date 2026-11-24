@@ -10,13 +10,10 @@ function Navigation() {
   }
   return <Stack screenOptions={{ headerShown: false }}>
     <Stack.Screen name="index" />
-    <Stack.Protected guard={!user}>
-      <Stack.Screen name="(auth)" />
-    </Stack.Protected>
     <Stack.Screen name="(customer)" />
+    <Stack.Screen name="booking/create" options={{ headerShown: true, title: 'Service details' }} />
     <Stack.Protected guard={!!user}>
       <Stack.Screen name="(provider)" />
-      <Stack.Screen name="booking/create" options={{ headerShown: true, title: 'New booking' }} />
       <Stack.Screen name="booking/[id]" options={{ headerShown: true, title: 'Booking details' }} />
       <Stack.Screen name="provider/[id]" options={{ headerShown: true, title: 'Provider profile' }} />
       <Stack.Screen name="notifications" options={{ headerShown: true, title: 'Notifications' }} />

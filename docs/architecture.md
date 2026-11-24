@@ -8,7 +8,7 @@ Expo, React Native, TypeScript strict mode, and Expo Router provide file-based n
 
 The root layout mounts AuthProvider. Firebase is initialized once only when all public configuration values exist. Native Auth uses AsyncStorage persistence; web uses browser persistence. AuthProvider observes authentication and the user's own Firestore profile, reports loading/errors, and cleans up subscriptions.
 
-Customer browsing supports guest access. Provider routes, bookings and notifications require an authenticated session through the root navigator. Provider approval checks, role-aware routing and server authorization are still required before connecting privileged features. Client routing is never the security boundary. Admin accounts are managed by trusted server tooling; no client can assign a role.
+The app starts directly on Home without login or registration screens. Customer browsing supports guest access. The service selection preview is public. Provider routes, existing booking details and notifications require an authenticated session through the root navigator. Provider approval checks, role-aware routing and server authorization are still required before connecting privileged features. Client routing is never the security boundary. Admin accounts are managed by trusted server tooling; no client can assign a role.
 
 ## Backend and security
 
@@ -18,6 +18,6 @@ Functions initializes Admin SDK and sets `asia-south1` and an instance limit. No
 
 ## Deferred integrations
 
-Booking workflows, registration profile provisioning, reviews, favorites, push permission/token registration, maps, and PayHere are not implemented. Email/password sign-in, Auth account creation, password reset and local category search are implemented. Expo Notifications is installed but no permission is requested automatically. Payments must eventually use server-side verification and idempotent webhook handling; no processing exists now.
+Booking workflows, registration profile provisioning, reviews, favorites, push permission/token registration, maps, and PayHere are not implemented. Local category search is implemented. Login, sign-up and password-reset pages have been removed. Expo Notifications is installed but no permission is requested automatically. Payments must eventually use server-side verification and idempotent webhook handling; no processing exists now.
 
 EXPO_PUBLIC variables are bundled public configuration, not secret storage. Never put service account keys, PayHere secrets, or privileged credentials there. Future function secrets belong in Firebase Secret Manager.

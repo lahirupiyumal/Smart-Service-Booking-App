@@ -13,11 +13,11 @@ npm start
 
 `npm run mobile` also starts Expo. Scan the QR code with a compatible Expo Go build, or press `w` for web, `a` for an Android emulator, or `i` for an iOS simulator. Platform tooling must be installed separately.
 
-The app opens at sign-in. Customers can select **Continue as guest** to browse categories without an account. Home, Agricultural and Vehicle Services have subcategory cards and local search.
+The app opens directly on Home. Login, sign-up and password-reset pages have been removed; category browsing does not require an account. Home, Agricultural and Vehicle Services have subcategory cards and local search.
 
 ## Firebase configuration
 
-For account services, copy the template if you do not already have a local environment file:
+For Firebase services, copy the template if you do not already have a local environment file:
 
 ```sh
 cp -n mobile-app/.env.example mobile-app/.env
@@ -25,7 +25,7 @@ cp -n mobile-app/.env.example mobile-app/.env
 
 Fill in the `EXPO_PUBLIC_FIREBASE_*` values in `mobile-app/.env` using your Firebase web app configuration. Enable Email/Password Authentication and configure Firestore and Storage. Restart Expo after editing environment variables.
 
-Sign-in, Auth account creation and password reset are implemented. User profile provisioning is still separate: provision `users/{uid}` through trusted tooling with `uid`, `email`, `displayName` and `role` (`customer`, `provider` or `admin`). Client profile writes and self-assignment of roles are denied.
+The app retains existing-session handling for protected routes. User profile provisioning is separate: provision `users/{uid}` through trusted tooling with `uid`, `email`, `displayName` and `role` (`customer`, `provider` or `admin`). Client profile writes and self-assignment of roles are denied.
 
 Firebase client configuration is public. Keep server secrets out of `EXPO_PUBLIC_*` variables. No Firebase resources are deployed by these setup steps.
 
