@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ServiceIcon } from '@/components/common/ServiceIcon';
 
 import { serviceCategories } from '@/features/services/data/categories';
+import { agriculturalCrops, type AgriculturalCropId } from '@/features/services/data/agriculturalCrops';
 
 export default function Home() {
   const { width, fontScale } = useWindowDimensions();
@@ -21,12 +22,17 @@ export default function Home() {
   const mainGap = compact ? 8 : 12;
   const mainCardWidth = contentWidth >= 280 ? Math.floor((contentWidth - mainGap * 2) / 3) : contentWidth;
   const mainImageSize = Math.max(40, Math.min(mainCardWidth - 20, compact ? 96 : 160));
+  const cropCardWidth = Math.floor((contentWidth - cardGap * 3) / 4);
+  const cropImageSize = Math.min(88, Math.max(24, cropCardWidth - (compact ? 12 : 24)));
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCrop, setSelectedCrop] = useState<AgriculturalCropId | null>(null);
   const [query, setQuery] = useState('');
   const [searchFocused, setSearchFocused] = useState(false);
   const searchTerm = query.trim().toLowerCase();
   const activeCategory = serviceCategories.find(category => category.id === selectedCategory);
-  const groups = (searchTerm ? serviceCategories : activeCategory ? [activeCategory] : []).map(category => ({
+  const activeCrop = agriculturalCrops.find(crop => crop.id === selectedCrop);
+  const choosingCrop = activeCategory?.id === 'agricultural' && !activeCrop && !searchTerm;
+  const groups = (searchTerm ? serviceCategories : activeCategory && !choosingCrop ? [activeCategory] : []).map(category => ({
     ...category,
     subcategories: category.subcategories.filter(subcategory =>
       `${category.name} ${subcategory.name} ${subcategory.services.join(' ')}`.toLowerCase().includes(searchTerm)),
@@ -50,15 +56,22 @@ export default function Home() {
           </View>
           {searchTerm.length > 0 && <Text accessibilityLiveRegion="polite" style={styles.resultCount}>{resultCount} {resultCount === 1 ? 'subcategory' : 'subcategories'} found</Text>}
         </View>
-        <View style={styles.section}><View style={styles.sectionHeading}><View><Text style={styles.kicker}>FIND YOUR SERVICE</Text><Text style={styles.sectionTitle}>{searchTerm ? 'Search results' : activeCategory ? activeCategory.name : 'What can we help with?'}</Text></View></View>
-          {(activeCategory || searchTerm) && <Pressable accessibilityRole="button" onPress={() => { setSelectedCategory(null); setQuery(''); }} style={styles.backButton}><Text style={styles.resetText}>←  All categories</Text></Pressable>}
-          {!activeCategory && !searchTerm && <View style={[styles.categoryGrid, { gap: mainGap }]}>{serviceCategories.map(category => <Pressable key={category.id} accessibilityRole="button" accessibilityLabel={`View ${category.name} subcategories`} onPress={() => setSelectedCategory(category.id)} style={({ pressed, hovered }) => [styles.category, styles.mainCategory, compact && styles.compactMainCategory, { width: mainCardWidth, minHeight: mainImageSize + (compact ? captionHeight + 34 : 88) }, hovered && styles.iconButtonHovered, pressed && styles.pressed]}>
+        <View style={styles.section}><View style={styles.sectionHeading}><View><Text style={styles.kicker}>FIND YOUR SERVICE</Text><Text style={styles.sectionTitle}>{searchTerm ? 'Search results' : activeCategory ? activeCrop && activeCategory.id === 'agricultural' ? `${activeCategory.name} · ${activeCrop.name}` : activeCategory.name : 'What can we help with?'}</Text></View></View>
+          {(activeCategory || searchTerm) && <Pressable accessibilityRole="button" onPress={() => { if (activeCrop && !searchTerm) setSelectedCrop(null); else { setSelectedCategory(null); setSelectedCrop(null); } setQuery(''); }} style={styles.backButton}><Text style={styles.resetText}>{activeCrop && !searchTerm ? '←  Vee & Tea' : '←  All categories'}</Text></Pressable>}
+          {!activeCategory && !searchTerm && <View style={[styles.categoryGrid, { gap: mainGap }]}>{serviceCategories.map(category => <Pressable key={category.id} accessibilityRole="button" accessibilityLabel={`View ${category.name} subcategories`} onPress={() => { setSelectedCategory(category.id); setSelectedCrop(null); }} style={({ pressed, hovered }) => [styles.category, styles.mainCategory, compact && styles.compactMainCategory, { width: mainCardWidth, minHeight: mainImageSize + (compact ? captionHeight + 34 : 88) }, hovered && styles.iconButtonHovered, pressed && styles.pressed]}>
             <Image source={category.image} style={[styles.categoryImage, { width: mainImageSize, height: mainImageSize }]} resizeMode="contain" accessible={false} />
             <View style={[styles.mainCaption, compact && { minHeight: captionHeight }]}><Text style={[styles.categoryLabel, compact && styles.compactMainLabel]}>{category.name}</Text></View>
           </Pressable>)}</View>}
+          {choosingCrop && <View style={styles.section}>
+            <Text style={styles.groupTitle}>Choose your crop</Text>
+            <View style={[styles.categoryGrid, { gap: cardGap }]}>{agriculturalCrops.map(crop => <Pressable key={crop.id} accessibilityRole="button" accessibilityLabel={`View ${crop.name} agricultural services`} onPress={() => setSelectedCrop(crop.id)} style={({ pressed, hovered }) => [styles.category, compact && styles.compactCategory, { width: cropCardWidth, minHeight: cropImageSize + (compact ? 44 : 62) }, hovered && styles.iconButtonHovered, pressed && styles.pressed]}>
+              <Image source={crop.image} style={[styles.categoryImage, { width: cropImageSize, height: cropImageSize }]} resizeMode="contain" accessible={false} />
+              <Text style={[styles.categoryLabel, compact && styles.compactCategoryLabel]}>{crop.name}</Text>
+            </Pressable>)}</View>
+          </View>}
           {groups.map(category => <View key={category.id} style={styles.section}>
-            <Text style={styles.groupTitle}>{category.name}</Text>
-            <View style={[styles.categoryGrid, { gap: cardGap }]}>{category.subcategories.map(subcategory => <Pressable key={subcategory.name} accessibilityRole="button" accessibilityLabel={`Book ${subcategory.name}`} onPress={() => router.push({ pathname: '/booking/create', params: { mainCategory: category.name, category: subcategory.name } })} style={({ pressed, hovered }) => [styles.category, compact && styles.compactCategory, { width: cardWidth, minHeight: compact ? compactCardHeight : 152 }, hovered && styles.iconButtonHovered, pressed && styles.pressed]}>
+            <Text style={styles.groupTitle}>{category.id === 'agricultural' && activeCrop ? `${activeCrop.name} services` : category.name}</Text>
+            <View style={[styles.categoryGrid, { gap: cardGap }]}>{category.subcategories.map(subcategory => <Pressable key={subcategory.name} accessibilityRole="button" accessibilityLabel={`Book ${subcategory.name}`} onPress={() => router.push({ pathname: '/booking/create', params: { mainCategory: category.name, category: subcategory.name, ...(category.id === 'agricultural' && activeCrop ? { crop: activeCrop.id } : {}) } })} style={({ pressed, hovered }) => [styles.category, compact && styles.compactCategory, { width: cardWidth, minHeight: compact ? compactCardHeight : 152 }, hovered && styles.iconButtonHovered, pressed && styles.pressed]}>
               {subcategory.image ? <Image source={subcategory.image} style={[styles.categoryImage, { width: imageSize, height: imageSize }]} resizeMode="contain" accessible={false} /> : <View style={[styles.subcategoryIcon, { width: imageSize, height: imageSize }]}><ServiceIcon name={subcategory.icon} size={32} /></View>}
               <View style={[styles.caption, compact && { minHeight: captionHeight }]}><Text style={[styles.categoryLabel, compact && styles.compactCategoryLabel]}>{subcategory.name}</Text></View>
             </Pressable>)}</View>

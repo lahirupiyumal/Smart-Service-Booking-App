@@ -45,6 +45,7 @@ Smart-Service-Booking-App/
 │   │   └── notifications.tsx
 │   ├── assets/
 │   │   ├── image-generation/
+│   │   │   ├── crop-prompts.json
 │   │   │   ├── main-category-prompts.json
 │   │   │   ├── prompts.json
 │   │   │   └── subcategory-prompts.json
@@ -55,7 +56,9 @@ Smart-Service-Booking-App/
 │   │           │   ├── harvesting.png
 │   │           │   ├── irrigation.png
 │   │           │   ├── land-preparation.png
-│   │           │   └── spraying.png
+│   │           │   ├── spraying.png
+│   │           │   ├── tea.png
+│   │           │   └── vee.png
 │   │           ├── home/
 │   │           │   ├── ac-repair.png
 │   │           │   ├── carpentry.png
@@ -125,6 +128,7 @@ Smart-Service-Booking-App/
 │   │   │   │       └── RequestsScreen.tsx
 │   │   │   └── services/
 │   │   │       ├── data/
+│   │   │       │   ├── agriculturalCrops.ts
 │   │   │       │   ├── categories.ts
 │   │   │       │   └── serviceImages.ts
 │   │   │       ├── screens/

@@ -1,0 +1,13 @@
+{
+  "generator": "Built-in image_gen",
+  "assets": [
+    {
+      "file": "images/services/agricultural/vee.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square crop category thumbnail for SmartServe service booking app. Subject: a beautiful miniature Sri Lankan paddy field with lush rice plants and golden ripe rice panicles, neat terraced earthen bunds, a subtle shallow irrigation channel, a small tied bundle of harvested golden paddy in the foreground. Premium miniature 3D illustration, refined natural textures, softly rounded edges, elegant isometric view, warm soft studio lighting, subtle contact shadows. Centered composition, safe margins, complete miniature diorama fully visible. Solid pale warm cream background, restrained natural green and golden colors. High visual clarity at small sizes. Cohesive with polished home and farm service app illustrations. No text, letters, logos, watermark, people, border or collage. One square image."
+    },
+    {
+      "file": "images/services/agricultural/tea.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square crop category thumbnail for SmartServe service booking app. Subject: a beautiful miniature Sri Lankan hillside tea plantation with neatly curved rows of lush tea bushes, fresh bright green tea shoots, a small woven basket of freshly picked tea leaves in the foreground. Premium miniature 3D illustration, refined natural textures, softly rounded edges, elegant isometric view, warm soft studio lighting, subtle contact shadows. Centered composition, safe margins, complete miniature diorama fully visible. Solid pale mint green background, restrained natural green and golden colors. High visual clarity at small sizes. Cohesive with polished home and farm service app illustrations. No text, letters, logos, watermark, people, border or collage. One square image."
+    }
+  ]
+}

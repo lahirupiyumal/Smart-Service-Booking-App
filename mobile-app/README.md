@@ -11,6 +11,7 @@ Expo Router + React Native application. Start here when looking for a screen or 
 | Sign out of an existing Firebase session | `src/features/auth/services/authService.ts` |
 | Current user and session restoration | `src/features/auth/context/AuthContext.tsx` |
 | Categories, subcategories and service names | `src/features/services/data/categories.ts` |
+| Agricultural Vee / Tea choices | `src/features/services/data/agriculturalCrops.ts` |
 | Category image references | `src/features/services/data/serviceImages.ts` |
 | Category TypeScript interfaces | `src/features/services/types/category.ts` |
 | Main category images | `assets/images/services/main-categories/` |

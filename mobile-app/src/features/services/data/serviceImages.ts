@@ -1,5 +1,7 @@
 // Static requires let Metro bundle every category image for native and web.
 export const serviceImages = {
+  'vee': require('../../../../assets/images/services/agricultural/vee.png'),
+  'tea': require('../../../../assets/images/services/agricultural/tea.png'),
   'home-services': require('../../../../assets/images/services/main-categories/home-services.png'),
   'agricultural-services': require('../../../../assets/images/services/main-categories/agricultural-services.png'),
   'vehicle-services': require('../../../../assets/images/services/main-categories/vehicle-services.png'),
