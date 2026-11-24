@@ -1,21 +1,24 @@
 import { useState } from 'react';
 import { router } from 'expo-router';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions, type ImageSourcePropType } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ServiceIcon, type IconName } from '@/components/common/ServiceIcon';
+import { ServiceIcon } from '@/components/common/ServiceIcon';
 
-const services: { category: string; icon: IconName; tint: string; label: string }[] = [
-  { category: 'Home Cleaning', icon: 'clean', tint: '#EAF1FF', label: 'Cleaning' },
-  { category: 'AC Repair', icon: 'ac', tint: '#E5F5FA', label: 'AC repair' },
-  { category: 'Electrical Services', icon: 'bolt', tint: '#FFF4DF', label: 'Electrical' },
-  { category: 'Plumbing', icon: 'plumbing', tint: '#E9F1FD', label: 'Plumbing' },
-  { category: 'Painting', icon: 'paint', tint: '#F1EDFC', label: 'Painting' },
-  { category: 'Gardening', icon: 'garden', tint: '#EAF5EE', label: 'Gardening' },
+const services: { category: string; image: ImageSourcePropType; label: string }[] = [
+  { category: 'Home Cleaning', image: require('../../assets/services/cleaning.png'), label: 'Cleaning' },
+  { category: 'AC Repair', image: require('../../assets/services/ac-repair.png'), label: 'AC repair' },
+  { category: 'Electrical Services', image: require('../../assets/services/electrical.png'), label: 'Electrical' },
+  { category: 'Plumbing', image: require('../../assets/services/plumbing.png'), label: 'Plumbing' },
+  { category: 'Painting', image: require('../../assets/services/painting.png'), label: 'Painting' },
+  { category: 'Gardening', image: require('../../assets/services/gardening.png'), label: 'Gardening' },
 ];
 
 export default function Home() {
   const { width } = useWindowDimensions();
-  const wide = width >= 760;
+  const contentWidth = Math.min(Math.max(width - 44, 0), 1040);
+  const columns = contentWidth >= 900 ? 6 : contentWidth >= 300 ? 3 : 2;
+  const cardWidth = Math.floor((contentWidth - (columns - 1) * 12) / columns);
+  const imageSize = Math.max(40, Math.min(cardWidth - 24, 104));
   const [query, setQuery] = useState('');
   const [searchFocused, setSearchFocused] = useState(false);
   const searchTerm = query.trim().toLowerCase();
@@ -39,7 +42,7 @@ export default function Home() {
           {searchTerm.length > 0 && <Text accessibilityLiveRegion="polite" style={styles.resultCount}>{filteredServices.length} {filteredServices.length === 1 ? 'service' : 'services'} found</Text>}
         </View>
         <View style={styles.section}><View style={styles.sectionHeading}><View><Text style={styles.kicker}>FIND YOUR SERVICE</Text><Text style={styles.sectionTitle}>What can we help with?</Text></View></View>
-          <View style={styles.categoryGrid}>{filteredServices.map(s => <Pressable key={s.category} accessibilityRole="button" onPress={() => router.push({ pathname: '/booking/create', params: { category: s.category } })} style={({ pressed }) => [styles.category, { width: wide ? '15.3%' : '31%' }, pressed && styles.pressed]}><View style={[styles.categoryIcon, { backgroundColor: s.tint }]}><ServiceIcon name={s.icon} color="#2563EB" size={26} /></View><Text style={styles.categoryLabel}>{s.label}</Text></Pressable>)}</View>
+          <View style={styles.categoryGrid}>{filteredServices.map(s => <Pressable key={s.category} accessibilityRole="button" onPress={() => router.push({ pathname: '/booking/create', params: { category: s.category } })} style={({ pressed }) => [styles.category, { width: cardWidth, height: imageSize + 64 }, pressed && styles.pressed]}><Image source={s.image} style={[styles.categoryImage, { width: imageSize, height: imageSize }]} resizeMode="contain" accessible={false} /><Text style={styles.categoryLabel}>{s.label}</Text></Pressable>)}</View>
           {filteredServices.length === 0 && <View style={styles.emptyState}><ServiceIcon name="search" size={30} color="#8A98AD" /><Text style={styles.emptyTitle}>No services found</Text><Text style={styles.emptyText}>Try “cleaning”, “AC” or “painting”.</Text><Pressable accessibilityRole="button" onPress={() => setQuery('')} style={styles.resetButton}><Text style={styles.resetText}>Show all services</Text></Pressable></View>}
         </View>
       </View>
@@ -50,7 +53,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#F7F9FC' }, scroll: { paddingHorizontal: 22, paddingBottom: 32 }, page: { width: '100%', maxWidth: 1040, alignSelf: 'center', gap: 30 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: 20, borderBottomWidth: 1, borderBottomColor: '#E7EDF5' }, row: { flexDirection: 'row', alignItems: 'center', gap: 10 }, logo: { width: 42, height: 42, backgroundColor: '#2563EB', borderRadius: 13, alignItems: 'center', justifyContent: 'center' }, brand: { color: '#14243D', fontSize: 22, fontWeight: '800', letterSpacing: -0.8 }, dot: { color: '#2563EB' }, brandCaption: { color: '#7C8AA0', fontSize: 7, letterSpacing: 1.7, fontWeight: '700', marginTop: 3 }, iconButton: { width: 44, height: 44, backgroundColor: '#FFFFFF', borderRadius: 14, borderWidth: 1, borderColor: '#E6ECF5', alignItems: 'center', justifyContent: 'center' },
-  section: { gap: 18 }, sectionHeading: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }, kicker: { color: '#8996AA', fontSize: 8, fontWeight: '700', letterSpacing: 1.5, marginBottom: 7 }, sectionTitle: { color: '#14243D', fontSize: 21, fontWeight: '700', letterSpacing: -0.6 }, categoryGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 12 }, category: { paddingVertical: 17, paddingHorizontal: 4, alignItems: 'center', gap: 12, borderRadius: 15, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6ECF4' }, categoryIcon: { width: 49, height: 49, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }, categoryLabel: { fontSize: 11, color: '#3E506B', fontWeight: '600' },
+  section: { gap: 18 }, sectionHeading: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 }, kicker: { color: '#8996AA', fontSize: 8, fontWeight: '700', letterSpacing: 1.5, marginBottom: 7 }, sectionTitle: { color: '#14243D', fontSize: 21, fontWeight: '700', letterSpacing: -0.6 }, categoryGrid: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-start', gap: 12 }, category: { paddingVertical: 16, paddingHorizontal: 10, alignItems: 'center', justifyContent: 'center', gap: 12, borderRadius: 15, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E6ECF4' }, categoryImage: { flexShrink: 0, borderRadius: 12 }, categoryLabel: { fontSize: 12, lineHeight: 18, color: '#3E506B', fontWeight: '600', textAlign: 'center' },
   headerActions: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   iconButtonHovered: { backgroundColor: '#EFF5FF', borderColor: '#BDD3FA' },
   searchSection: { gap: 10 },
