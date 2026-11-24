@@ -18,7 +18,8 @@ export default function Home() {
   const cardWidth = Math.floor((contentWidth - (columns - 1) * cardGap) / columns);
   const imageSize = Math.min(72, Math.max(24, cardWidth - 16));
   const captionHeight = Math.ceil(42 * fontScale);
-  const compactCardHeight = imageSize + captionHeight + 30;
+  const serviceCaptionHeight = Math.ceil(28 * fontScale);
+  const compactCardHeight = imageSize + serviceCaptionHeight + 22;
   const mainGap = compact ? 8 : 12;
   const mainCardWidth = contentWidth >= 280 ? Math.floor((contentWidth - mainGap * 2) / 3) : contentWidth;
   const mainImageSize = Math.max(40, Math.min(mainCardWidth - 20, compact ? 96 : 160));
@@ -71,9 +72,9 @@ export default function Home() {
           </View>}
           {groups.map(category => <View key={category.id} style={styles.section}>
             <Text style={styles.groupTitle}>{category.id === 'agricultural' && activeCrop ? `${activeCrop.name} services` : category.name}</Text>
-            <View style={[styles.categoryGrid, { gap: cardGap }]}>{category.subcategories.map(subcategory => <Pressable key={subcategory.name} accessibilityRole="button" accessibilityLabel={`Book ${subcategory.name}`} onPress={() => router.push({ pathname: '/booking/create', params: { mainCategory: category.name, category: subcategory.name, ...(category.id === 'agricultural' && activeCrop ? { crop: activeCrop.id } : {}) } })} style={({ pressed, hovered }) => [styles.category, compact && styles.compactCategory, { width: cardWidth, minHeight: compact ? compactCardHeight : 152 }, hovered && styles.iconButtonHovered, pressed && styles.pressed]}>
+            <View style={[styles.categoryGrid, { gap: cardGap }]}>{category.subcategories.map(subcategory => <Pressable key={subcategory.name} accessibilityRole="button" accessibilityLabel={`Book ${subcategory.name}`} onPress={() => router.push({ pathname: '/booking/create', params: { mainCategory: category.name, category: subcategory.name, ...(category.id === 'agricultural' && activeCrop ? { crop: activeCrop.id } : {}) } })} style={({ pressed, hovered }) => [styles.category, compact && styles.compactCategory, compact && styles.compactServiceCategory, { width: cardWidth, minHeight: compact ? compactCardHeight : 152 }, hovered && styles.iconButtonHovered, pressed && styles.pressed]}>
               {subcategory.image ? <Image source={subcategory.image} style={[styles.categoryImage, { width: imageSize, height: imageSize }]} resizeMode="contain" accessible={false} /> : <View style={[styles.subcategoryIcon, { width: imageSize, height: imageSize }]}><ServiceIcon name={subcategory.icon} size={32} /></View>}
-              <View style={[styles.caption, compact && { minHeight: captionHeight }]}><Text style={[styles.categoryLabel, compact && styles.compactCategoryLabel]}>{subcategory.name}</Text></View>
+              <View style={[styles.caption, compact && { minHeight: serviceCaptionHeight }]}><Text style={[styles.categoryLabel, compact && styles.compactCategoryLabel]}>{subcategory.name}</Text></View>
             </Pressable>)}</View>
           </View>)}
           {!!searchTerm && resultCount === 0 && <View style={styles.emptyState}><ServiceIcon name="search" size={30} color="#8A98AD" /><Text style={styles.emptyTitle}>No services found</Text><Text style={styles.emptyText}>Try “cleaning”, “tractor” or “car wash”.</Text><Pressable accessibilityRole="button" onPress={() => setQuery('')} style={styles.resetButton}><Text style={styles.resetText}>Back to categories</Text></Pressable></View>}

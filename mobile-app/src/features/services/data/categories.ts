@@ -19,9 +19,6 @@ export const serviceCategories: ServiceCategory[] = [
     image: serviceImages['agricultural-services'], id: 'agricultural', name: 'Agricultural Services', icon: 'garden',
     subcategories: [
       { name: 'Land Preparation', services: ['Ploughing', 'Land Clearing'], icon: 'garden', image: serviceImages['land-preparation'] },
-      { name: 'Irrigation', services: ['Water Pump', 'Irrigation Systems'], icon: 'plumbing', image: serviceImages['irrigation'] },
-      { name: 'Crop Management', services: ['Fertilizer Application', 'Weed Control'], icon: 'garden', image: serviceImages['crop-management'] },
-      { name: 'Spraying', services: ['Pesticide Spraying', 'Crop Protection'], icon: 'clean', image: serviceImages['spraying'] },
       { name: 'Harvesting', services: ['Crop Harvesting', 'Fruit Picking'], icon: 'garden', image: serviceImages['harvesting'] },
     ],
   },

@@ -52,11 +52,8 @@ Smart-Service-Booking-App/
 │   │   └── images/
 │   │       └── services/
 │   │           ├── agricultural/
-│   │           │   ├── crop-management.png
 │   │           │   ├── harvesting.png
-│   │           │   ├── irrigation.png
 │   │           │   ├── land-preparation.png
-│   │           │   ├── spraying.png
 │   │           │   ├── tea.png
 │   │           │   └── vee.png
 │   │           ├── home/
@@ -110,8 +107,13 @@ Smart-Service-Booking-App/
 │   │   │   │   ├── screens/
 │   │   │   │   │   ├── HomeScreen.tsx
 │   │   │   │   │   └── ProfileScreen.tsx
-│   │   │   │   └── styles/
-│   │   │   │       └── HomeScreen.styles.ts
+│   │   │   │   ├── services/
+│   │   │   │   │   └── profileStorage.ts
+│   │   │   │   ├── styles/
+│   │   │   │   │   ├── HomeScreen.styles.ts
+│   │   │   │   │   └── ProfileScreen.styles.ts
+│   │   │   │   └── types/
+│   │   │   │       └── profile.ts
 │   │   │   ├── favorites/
 │   │   │   │   └── screens/
 │   │   │   │       └── FavoritesScreen.tsx

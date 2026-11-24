@@ -18,6 +18,9 @@ Expo Router + React Native application. Start here when looking for a screen or 
 | Subcategory images | `assets/images/services/home/`, `agricultural/`, `vehicle/` |
 | AI image generation prompts | `assets/image-generation/` |
 | Customer profile | `src/features/customer/screens/ProfileScreen.tsx` |
+| Profile layout and colors | `src/features/customer/styles/ProfileScreen.styles.ts` |
+| Local profile storage | `src/features/customer/services/profileStorage.ts` |
+| Profile fields and avatar colors | `src/features/customer/types/profile.ts` |
 | Bottom navigation | `src/navigation/CustomerTabs.tsx` |
 | Login guards and root navigation | `src/navigation/RootNavigator.tsx` |
 | Startup redirect | `src/navigation/EntryRedirect.tsx` |
@@ -85,3 +88,5 @@ The app opens directly on Home. Login, sign-up and password-reset screens have b
 5. Run the TypeScript check and a relevant platform build after changing imports or routes.
 
 For the complete repository tree, see [folder structure](../docs/folder-structure.md).
+
+Customer profiles can be edited and saved on the current device through AsyncStorage. Guest and existing Firebase user profiles use separate local storage keys. These contact details do not update Firebase Authentication or Firestore and are not synchronized to other devices.
