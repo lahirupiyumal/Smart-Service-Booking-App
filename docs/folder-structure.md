@@ -1,30 +1,9 @@
 # Complete source structure
 
-Dependency folders and generated output are omitted. Empty feature folders contain `.gitkeep` files.
+Generated dependencies, local environment files and build output are omitted. See [the mobile editing guide](../mobile-app/README.md) for the files to edit for each feature.
 
 ```text
-smart-service-booking/
-├── admin-dashboard/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── config/
-│   │   │   └── firebase.ts
-│   │   ├── hooks/
-│   │   ├── layouts/
-│   │   │   └── DashboardLayout.tsx
-│   │   ├── pages/
-│   │   │   └── ManagementPage.tsx
-│   │   ├── services/
-│   │   ├── types/
-│   │   ├── App.tsx
-│   │   ├── main.tsx
-│   │   └── styles.css
-│   ├── .DS_Store
-│   ├── .env.example
-│   ├── index.html
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── vite.config.ts
+Smart-Service-Booking-App/
 ├── docs/
 │   ├── architecture.md
 │   ├── database-schema.md
@@ -35,18 +14,7 @@ smart-service-booking/
 │   └── storage.rules
 ├── functions/
 │   ├── src/
-│   │   ├── auth/
-│   │   │   └── index.ts
-│   │   ├── bookings/
-│   │   │   └── index.ts
-│   │   ├── notifications/
-│   │   │   └── index.ts
-│   │   ├── payments/
-│   │   │   └── index.ts
-│   │   ├── providers/
-│   │   │   └── index.ts
 │   │   └── index.ts
-│   ├── .DS_Store
 │   ├── .env.example
 │   ├── package-lock.json
 │   ├── package.json
@@ -81,56 +49,118 @@ smart-service-booking/
 │   │   ├── index.tsx
 │   │   └── notifications.tsx
 │   ├── assets/
+│   │   ├── image-generation/
+│   │   │   ├── main-category-prompts.json
+│   │   │   ├── prompts.json
+│   │   │   └── subcategory-prompts.json
+│   │   └── images/
+│   │       └── services/
+│   │           ├── agricultural/
+│   │           │   ├── crop-management.png
+│   │           │   ├── harvesting.png
+│   │           │   ├── irrigation.png
+│   │           │   ├── land-preparation.png
+│   │           │   ├── landscaping.png
+│   │           │   ├── machinery-repair.png
+│   │           │   └── spraying.png
+│   │           ├── home/
+│   │           │   ├── ac-repair.png
+│   │           │   ├── carpentry.png
+│   │           │   ├── cleaning.png
+│   │           │   ├── construction.png
+│   │           │   ├── electrical.png
+│   │           │   ├── gardening.png
+│   │           │   ├── painting.png
+│   │           │   └── plumbing.png
+│   │           ├── main-categories/
+│   │           │   ├── agricultural-services.png
+│   │           │   ├── home-services.png
+│   │           │   └── vehicle-services.png
+│   │           └── vehicle/
+│   │               ├── battery-services.png
+│   │               ├── tire-services.png
+│   │               ├── towing.png
+│   │               ├── vehicle-electrical.png
+│   │               ├── vehicle-repair.png
+│   │               ├── vehicle-servicing.png
+│   │               └── vehicle-washing.png
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── cards/
 │   │   │   │   └── InfoCard.tsx
 │   │   │   ├── common/
 │   │   │   │   ├── Button.tsx
-│   │   │   │   └── PlaceholderScreen.tsx
-│   │   │   ├── forms/
-│   │   │   │   └── TextField.tsx
+│   │   │   │   ├── PlaceholderScreen.tsx
+│   │   │   │   └── ServiceIcon.tsx
 │   │   │   └── layout/
 │   │   │       └── Screen.tsx
 │   │   ├── config/
 │   │   │   ├── env.ts
 │   │   │   └── firebase.ts
-│   │   ├── constants/
-│   │   │   └── categories.ts
-│   │   ├── contexts/
-│   │   │   └── AuthContext.tsx
 │   │   ├── features/
 │   │   │   ├── auth/
+│   │   │   │   ├── components/
+│   │   │   │   │   └── AuthField.tsx
+│   │   │   │   ├── context/
+│   │   │   │   │   └── AuthContext.tsx
+│   │   │   │   ├── screens/
+│   │   │   │   │   └── AuthScreen.tsx
+│   │   │   │   ├── services/
+│   │   │   │   │   ├── authErrors.ts
+│   │   │   │   │   └── authService.ts
+│   │   │   │   ├── styles/
+│   │   │   │   │   └── AuthScreen.styles.ts
+│   │   │   │   └── types/
+│   │   │   │       └── user.ts
 │   │   │   ├── bookings/
+│   │   │   │   └── screens/
+│   │   │   │       ├── BookingDetailsScreen.tsx
+│   │   │   │       ├── BookingsScreen.tsx
+│   │   │   │       └── CreateBookingScreen.tsx
 │   │   │   ├── customer/
+│   │   │   │   ├── screens/
+│   │   │   │   │   ├── HomeScreen.tsx
+│   │   │   │   │   └── ProfileScreen.tsx
+│   │   │   │   └── styles/
+│   │   │   │       └── HomeScreen.styles.ts
 │   │   │   ├── favorites/
+│   │   │   │   └── screens/
+│   │   │   │       └── FavoritesScreen.tsx
 │   │   │   ├── notifications/
-│   │   │   ├── payments/
+│   │   │   │   └── screens/
+│   │   │   │       └── NotificationsScreen.tsx
 │   │   │   ├── provider/
-│   │   │   ├── reviews/
+│   │   │   │   └── screens/
+│   │   │   │       ├── AvailabilityScreen.tsx
+│   │   │   │       ├── EarningsScreen.tsx
+│   │   │   │       ├── ProviderDashboardScreen.tsx
+│   │   │   │       ├── ProviderProfileScreen.tsx
+│   │   │   │       ├── ProviderServicesScreen.tsx
+│   │   │   │       └── RequestsScreen.tsx
 │   │   │   └── services/
-│   │   ├── hooks/
-│   │   ├── schemas/
-│   │   ├── services/
-│   │   │   ├── auth/
-│   │   │   │   └── authService.ts
-│   │   │   ├── booking/
-│   │   │   ├── firebase/
-│   │   │   ├── notification/
-│   │   │   └── payment/
-│   │   ├── theme/
-│   │   │   └── index.ts
-│   │   ├── types/
-│   │   │   └── user.ts
-│   │   └── utils/
-│   ├── .DS_Store
+│   │   │       ├── data/
+│   │   │       │   ├── categories.ts
+│   │   │       │   └── serviceImages.ts
+│   │   │       ├── screens/
+│   │   │       │   └── ExploreScreen.tsx
+│   │   │       └── types/
+│   │   │           └── category.ts
+│   │   ├── navigation/
+│   │   │   ├── AuthNavigator.tsx
+│   │   │   ├── CustomerTabs.tsx
+│   │   │   ├── EntryRedirect.tsx
+│   │   │   ├── ProviderTabs.tsx
+│   │   │   └── RootNavigator.tsx
+│   │   └── theme/
+│   │       └── index.ts
 │   ├── .env.example
+│   ├── .gitignore
+│   ├── README.md
 │   ├── app.json
 │   ├── expo-env.d.ts
+│   ├── package-lock.json
 │   ├── package.json
 │   └── tsconfig.json
-├── smart-service-booking/
-├── .DS_Store
 ├── .gitignore
 ├── .nvmrc
 ├── README.md

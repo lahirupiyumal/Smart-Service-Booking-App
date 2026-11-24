@@ -1,0 +1,17 @@
+{
+  "generator": "Built-in image_gen",
+  "assets": [
+    {
+      "file": "images/services/main-categories/home-services.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square main category image for a premium service booking app. Subject: a beautiful miniature modern two-storey Sri Lankan tropical home, white walls, blue roof accents, a small front garden, with a neat blue toolbox and paint roller beside the house. Cohesive premium 3D miniature illustration, sophisticated realistic materials with softly rounded edges, subtle isometric view, clean studio lighting, soft ambient shadows. Restrained blue, white and natural green accents. Centered composition with generous 12 percent safe margins. Solid pale ice blue backdrop. Clear silhouette readable at small thumbnail sizes. Elegant, credible, carefully composed, uncluttered. No people, no text, no letters, no logos, no watermark, no border. Single square image."
+    },
+    {
+      "file": "images/services/main-categories/agricultural-services.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square main category image for a premium service booking app. Subject: a polished miniature green tractor beside neat cultivated crop rows, lush green seedlings and a small wooden crate of fresh vegetables. Cohesive premium 3D miniature illustration, sophisticated realistic materials with softly rounded edges, subtle isometric view, clean studio lighting, soft ambient shadows. Restrained blue, white and natural green accents. Centered composition with generous 12 percent safe margins. Solid pale mint green backdrop. Clear silhouette readable at small thumbnail sizes. Elegant, credible, carefully composed, uncluttered. No people, no text, no letters, no logos, no watermark, no border. Single square image."
+    },
+    {
+      "file": "images/services/main-categories/vehicle-services.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square main category image for a premium service booking app. Subject: a beautiful compact blue car beside a neat mechanic's toolbox, a chrome service wrench and a single spare tire. Cohesive premium 3D miniature illustration, sophisticated realistic materials with softly rounded edges, subtle isometric view, clean studio lighting, soft ambient shadows. Restrained blue, white and natural green accents. Centered composition with generous 12 percent safe margins. Solid pale warm cream backdrop. Clear silhouette readable at small thumbnail sizes. Elegant, credible, carefully composed, uncluttered. No people, no text, no letters, no logos, no watermark, no border. Single square image."
+    }
+  ]
+}

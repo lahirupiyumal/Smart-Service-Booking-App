@@ -1,0 +1,69 @@
+{
+  "generator": "Built-in image_gen",
+  "assets": [
+    {
+      "file": "images/services/home/carpentry.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a woodworker's wooden hand plane, a neatly cut timber plank, a small hammer and curled wood shavings. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid warm ivory background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/home/construction.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a miniature partially built brick wall, a masonry trowel, small stack of bricks and a yellow hard hat. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale sand background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/agricultural/land-preparation.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a small green tractor with a plough turning neat rows of rich brown soil. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale mint background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/agricultural/irrigation.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a compact blue water pump connected to a drip irrigation pipe watering neat green seedlings. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale cyan background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/agricultural/crop-management.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: healthy green crop seedlings in a neat square of soil beside an unmarked fertilizer bag and small gardening hand fork. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale mint background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/agricultural/spraying.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a sealed blue agricultural backpack sprayer with hose and spray wand beside healthy crop leaves, no people. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale mint background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/agricultural/harvesting.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a wooden harvest crate filled with ripe vegetables beside a small bundle of golden harvested rice stalks. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale warm cream background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/agricultural/machinery-repair.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a miniature green tractor with a raised engine hood and a chrome wrench and neat small tool chest beside it. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale mint background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/agricultural/landscaping.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a beautiful miniature landscaped garden with curved stone path, trimmed round shrubs and a small shovel. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale mint background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/vehicle/vehicle-repair.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a compact blue car with open engine hood beside a neat blue toolbox and chrome wrench. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale ice blue background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/vehicle/vehicle-servicing.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a blue motor oil container with no label, a shiny oil filter and small chrome wrench beside the front corner of a blue car. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale cyan background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/vehicle/vehicle-washing.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a clean blue compact car with soft soap bubbles, a blue wash bucket and yellow sponge. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale cyan background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/vehicle/tire-services.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: two premium black car tires, one with shiny silver wheel rim, beside a small blue floor jack and lug wrench. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale ice blue background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/vehicle/battery-services.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a dark blue automotive battery with clearly separated red and black terminals and neatly coiled jumper cables. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale warm cream background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/vehicle/vehicle-electrical.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a blue digital multimeter with blank display, red and black test leads and a small organized automotive wiring harness. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale ice blue background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    },
+    {
+      "file": "images/services/vehicle/towing.png",
+      "prompt": "Use case: stylized-concept. Asset type: professional square subcategory thumbnail in SmartServe service booking app. Subject: a miniature blue flatbed tow truck carrying a small white car, neatly centered, all wheels and truck fully visible. Premium cohesive 3D miniature illustration with softly rounded realistic materials, soft studio lighting, subtle contact shadows, slight isometric view. Restrained blue accents, natural material colors. Solid pale warm cream background. Centered uncluttered composition, objects fill 75 percent, generous safe margins, all subjects fully inside frame. Highly readable as a small card thumbnail. Elegant polished commercial quality. No text, labels, letters, brand logos, watermark, border, people or collage. One square image."
+    }
+  ]
+}

@@ -4,10 +4,9 @@
   "version": "0.1.0",
   "scripts": {
     "mobile": "npm --prefix mobile-app start",
-    "admin": "npm --prefix admin-dashboard run dev",
-    "typecheck": "npm --prefix mobile-app run typecheck && npm --prefix admin-dashboard run typecheck && npm --prefix functions run typecheck",
-    "build:admin": "npm --prefix admin-dashboard run build",
-    "build:functions": "npm --prefix functions run build"
+    "typecheck": "npm --prefix mobile-app run typecheck && npm --prefix functions run typecheck",
+    "build:functions": "npm --prefix functions run build",
+    "start": "npm run mobile"
   },
   "engines": {
     "node": ">=22.13.0 <23"

@@ -1,85 +1,61 @@
 # Smart Service Booking
 
-A Sri Lankan service marketplace foundation built with Expo, React Native, Firebase, and a separate React administration dashboard.
+A Sri Lankan service marketplace built with Expo, React Native and Firebase. The repository contains the mobile application and a Firebase Functions backend scaffold.
 
-This phase includes configuration, reusable UI, customer/provider previews, email sign-in plumbing, Firebase session/profile context, and server project setup. Registration, booking workflows, payments, administrative actions, notifications delivery, and maps remain unimplemented.
+## Install and run the mobile app
 
-## Verification status
-
-Source scaffold is written. Dependency installation was attempted but failed with `ENOSPC` (disk full), with additional npm registry timeouts. Partial project installs were removed. Expo startup, dependency-aware TypeScript checks, and production builds have **not passed or been verified**. Free at least 2–3 GB before reinstalling and running the checks below. No Firebase resources were deployed.
-
-## Requirements and installation
-
-Use Node 22.13+ and npm. Install each project independently; each uses its own dependency manifest. The Functions lockfile is included; mobile/admin lockfile generation was interrupted by registry timeouts.
+Use Node **22.13+ (22.x)** and npm. From the repository root:
 
 ```sh
 npm --prefix mobile-app install
-npm --prefix admin-dashboard install
-npm --prefix functions ci
+npm start
 ```
 
-## Run mobile
+`npm run mobile` also starts Expo. Scan the QR code with a compatible Expo Go build, or press `w` for web, `a` for an Android emulator, or `i` for an iOS simulator. Platform tooling must be installed separately.
 
-```sh
-npm run mobile
-# Or:
-cd mobile-app
-npm run android
-npm run ios
-npm run web
-```
-
-Scan the Expo QR code with a compatible Expo Go build, or use an installed Android emulator/iOS Simulator. Native simulator tooling must be installed separately. The welcome screen opens without Firebase credentials. Preview navigation is public and does not imply role authorization.
+The app opens at sign-in. Customers can select **Continue as guest** to browse categories without an account. Home, Agricultural and Vehicle Services have subcategory cards and local search.
 
 ## Firebase configuration
 
+For account services, copy the template if you do not already have a local environment file:
+
 ```sh
-cp mobile-app/.env.example mobile-app/.env
-cp admin-dashboard/.env.example admin-dashboard/.env
+cp -n mobile-app/.env.example mobile-app/.env
 ```
 
-Create/select your Firebase project and register a web app. Copy its public configuration to both environment files using their respective prefixes. Enable Email/Password Authentication, create Firestore and Storage, and confirm the backend region. Restart Expo/Vite after editing environment variables.
+Fill in the `EXPO_PUBLIC_FIREBASE_*` values in `mobile-app/.env` using your Firebase web app configuration. Enable Email/Password Authentication and configure Firestore and Storage. Restart Expo after editing environment variables.
 
-For initial sign-in testing, create an Auth user in Firebase Console and provision `users/{uid}` through trusted tooling with `uid`, `email`, `displayName`, and `role` (`customer`, `provider`, or `admin`). Client profile writes and self-assignment of roles are denied. Profile provisioning and registration flows will be built later.
+Sign-in, Auth account creation and password reset are implemented. User profile provisioning is still separate: provision `users/{uid}` through trusted tooling with `uid`, `email`, `displayName` and `role` (`customer`, `provider` or `admin`). Client profile writes and self-assignment of roles are denied.
 
-Public Firebase config is bundled in clients. Never use these variables for server secrets. No Firebase project ID or credentials are committed. Add your project alias with Firebase CLI before any deployment. This task does not deploy anything.
+Firebase client configuration is public. Keep server secrets out of `EXPO_PUBLIC_*` variables. No Firebase resources are deployed by these setup steps.
 
-## Run administration and backend tools
+## Backend tools
+
+The backend has its own dependencies; they are not required to start the mobile UI:
 
 ```sh
-npm run admin
-npm run build:admin
+npm --prefix functions ci
 npm run build:functions
 npm --prefix functions run serve -- --project YOUR_PROJECT_ID
 ```
 
-The admin dashboard contains preview sections only. Firebase emulators require Java and a selected project; mobile and admin clients currently use configured Firebase services, not emulators. Emulator client routing is a future configuration step. Functions has no exported handlers yet.
+Firebase emulators require Java and a selected project. The mobile client currently connects to its configured Firebase services; emulator routing is not configured. Functions has no exported handlers yet.
 
 ## Validation
 
 ```sh
-npm run typecheck
-npm run build:admin
-npm run build:functions
 cd mobile-app
-npx expo install --check
+npm run typecheck
 npx expo export --platform web
 ```
 
-## Dependencies
+From the repository root, after installing backend dependencies, check both projects with `npm run typecheck` and build the backend with `npm run build:functions`.
 
-Mobile: Expo/React Native/React, Expo Router, safe-area context, native screens, linking/constants/status bar, React Native Web/React DOM, Firebase JS SDK, AsyncStorage for native auth persistence, and Expo Notifications for future push integration. These dependencies are declared; the complete installation remains pending. TypeScript and React types are development tools. Expo selects compatible native package versions.
+Booking workflows, payments, reviews, favorites, notification delivery, maps and provider management remain unfinished. Native device behavior and real Firebase account flows require testing with configured services.
 
-Administration: React/React DOM, Firebase JS SDK, Vite, the React Vite plugin, TypeScript, and React type packages. No UI framework or charting library is added.
+## Project guide
 
-Backend: firebase-admin, firebase-functions, TypeScript, and firebase-tools for local emulators and CLI operations. There is no payment SDK.
-
-## Documentation
-
+- [Mobile app editing guide](mobile-app/README.md) — find screens, styles, categories and images.
+- [Complete source structure](docs/folder-structure.md)
 - [Architecture](docs/architecture.md)
 - [Proposed database schema](docs/database-schema.md)
-- [Complete source structure](docs/folder-structure.md)
-
-Firebase project configuration, initial users/profiles, platform tooling, and future production identifiers still require your input. Maps and PayHere credentials are not needed for this phase.
-
-Compatibility references: [Expo Router installation](https://docs.expo.dev/router/installation/) and [Firebase JS SDK in Expo](https://docs.expo.dev/guides/using-firebase/). Mobile package versions follow the installed Expo 58.0.26 compatibility manifest inspected during setup.
