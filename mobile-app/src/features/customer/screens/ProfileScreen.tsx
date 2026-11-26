@@ -19,7 +19,10 @@ function ProfileField({ label, editing, ...props }: TextInputProps & { label: st
 
 export default function ProfileScreen() {
   const { width } = useWindowDimensions();
-  const { user } = useAuth();
+  const { user, profile: accountProfile } = useAuth();
+  const accountName = accountProfile?.fullName ?? '';
+  const accountEmail = accountProfile?.email ?? '';
+  const accountPhone = accountProfile?.phone ?? '';
   const [saved, setSaved] = useState<CustomerProfile>({ ...emptyProfile });
   const [draft, setDraft] = useState<CustomerProfile>({ ...emptyProfile });
   const [loading, setLoading] = useState(true);
@@ -33,12 +36,13 @@ export default function ProfileScreen() {
   useEffect(() => {
     let active = true;
     setLoading(true); setLoadError(false); setEditing(false); setMessage(''); setError('');
-    loadCustomerProfile(user?.uid).then(profile => {
+    loadCustomerProfile(user?.uid).then(stored => {
+      const profile = { ...stored, fullName: stored.fullName || accountName, email: stored.email || accountEmail, phone: stored.phone || accountPhone };
       if (active) { setSaved(profile); setDraft(profile); }
     }).catch(() => { if (active) setLoadError(true); })
       .finally(() => { if (active) setLoading(false); });
     return () => { active = false; };
-  }, [user?.uid, retry]);
+  }, [user?.uid, accountName, accountEmail, accountPhone, retry]);
 
   function update(key: keyof CustomerProfile, value: string) {
     setDraft(previous => ({ ...previous, [key]: value })); setError(''); setMessage('');
@@ -61,7 +65,7 @@ export default function ProfileScreen() {
   }
   async function signOut() {
     setBusy(true); setError('');
-    try { await logout(); router.replace('/'); }
+    try { await logout(); router.replace('/(auth)/login'); }
     catch { setError('Couldn’t sign out. Please try again.'); }
     finally { setBusy(false); }
   }
@@ -101,7 +105,7 @@ export default function ProfileScreen() {
                   <View style={styles.cardHeading}><View style={styles.headingCopy}><Text style={styles.cardTitle}>Personal information</Text><Text style={styles.cardSubtitle}>Keep your contact details up to date.</Text></View>{!editing && <Pressable accessibilityRole="button" onPress={() => { setDraft({ ...saved }); setEditing(true); setError(''); setMessage(''); }} style={styles.editButton}><Text style={styles.editText}>Edit profile</Text></Pressable>}</View>
                   <View style={styles.form}>
                     <ProfileField label="Full name" editing={editing} value={draft.fullName} onChangeText={value => update('fullName', value)} placeholder="Enter your full name" autoComplete="name" autoCapitalize="words" maxLength={100} editable={!busy} />
-                    <ProfileField label="Email address" editing={editing} value={draft.email} onChangeText={value => update('email', value)} placeholder="you@example.com" autoComplete="email" keyboardType="email-address" autoCapitalize="none" autoCorrect={false} maxLength={254} editable={!busy} />
+                    <ProfileField label="Email address" editing={editing} value={draft.email} onChangeText={value => update('email', value)} placeholder="you@example.com" autoComplete="email" keyboardType="email-address" autoCapitalize="none" autoCorrect={false} maxLength={254} editable={false} />
                     <ProfileField label="Phone number" editing={editing} value={draft.phone} onChangeText={value => update('phone', value)} placeholder="077 123 4567" keyboardType="phone-pad" autoComplete="tel" maxLength={24} editable={!busy} />
                     <ProfileField label="City / town" editing={editing} value={draft.city} onChangeText={value => update('city', value)} placeholder="e.g. Colombo" autoCapitalize="words" maxLength={100} editable={!busy} />
                     <ProfileField label="Service address" editing={editing} value={draft.address} onChangeText={value => update('address', value)} placeholder="House number, street and area" autoComplete="street-address" multiline maxLength={300} editable={!busy} />
@@ -110,7 +114,7 @@ export default function ProfileScreen() {
                   {!!message && <Text accessibilityLiveRegion="polite" style={styles.success}>{message}</Text>}
                   {editing && <View style={styles.buttons}><Pressable accessibilityRole="button" disabled={busy} onPress={() => { setDraft({ ...saved }); setEditing(false); setError(''); }} style={[styles.cancelButton, busy && styles.disabled]}><Text style={styles.cancelText}>Cancel</Text></Pressable><Pressable accessibilityRole="button" accessibilityState={{ busy }} disabled={busy} onPress={() => { void save(); }} style={[styles.primaryButton, styles.saveButton, busy && styles.disabled]}>{busy ? <ActivityIndicator color="#FFFFFF" /> : <Text style={styles.primaryText}>Save changes</Text>}</Pressable></View>}
                 </View>
-                <View style={styles.deviceNote}><ServiceIcon name="check" size={19} color="#16796B" /><View style={styles.headingCopy}><Text style={styles.noteTitle}>Saved on this device</Text><Text style={styles.noteText}>Your profile stays here when you reopen the app. It won’t sync to other devices or change a Firebase account.</Text></View></View>
+                <View style={styles.deviceNote}><ServiceIcon name="check" size={19} color="#16796B" /><View style={styles.headingCopy}><Text style={styles.noteTitle}>Synced with your account</Text><Text style={styles.noteText}>Your profile is securely saved to your account and available across your devices.</Text></View></View>
                 {user && <Pressable accessibilityRole="button" disabled={busy} onPress={() => { void signOut(); }} style={styles.signOutButton}><Text style={styles.signOutText}>Sign out</Text></Pressable>}
               </View>
             </View>}

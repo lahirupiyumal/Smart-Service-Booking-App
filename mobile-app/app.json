@@ -6,6 +6,10 @@
     "scheme": "smartservicebooking",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
+    "android": {
+      "package": "com.smartservice.booking",
+      "googleServicesFile": "./google-services.json"
+    },
     "plugins": [
       "expo-router",
       "expo-notifications"

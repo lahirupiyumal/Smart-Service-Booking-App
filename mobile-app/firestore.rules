@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    match /users/{uid} {
+      function owner() {
+        return signedIn() && request.auth.uid == uid;
+      }
+      function validCustomerRegistration() {
+        let data = request.resource.data;
+        return data.keys().hasAll(['uid', 'fullName', 'email', 'phone', 'role', 'isActive', 'createdAt'])
+          && data.keys().hasOnly(['uid', 'fullName', 'email', 'phone', 'role', 'isActive', 'createdAt'])
+          && data.uid == uid
+          && data.fullName is string && data.fullName.size() >= 2 && data.fullName.size() <= 100
+          && data.email is string && data.email == request.auth.token.email
+          && data.phone is string && data.phone.matches('^[+]?[0-9]{9,15}$')
+          && data.role == 'customer'
+          && data.isActive == true
+          && data.createdAt is timestamp && data.createdAt == request.time;
+      }
+      allow get: if owner();
+      // Clients can create only their own initial customer profile.
+      allow create: if owner() && validCustomerRegistration();
+      // Role/status changes and profile deletion remain trusted server operations.
+      allow list, update, delete: if false;
+    }
+    // Open collections only after their schema and ownership rules are implemented.
+    match /{document=**} { allow read, write: if false; }
+  }
+}

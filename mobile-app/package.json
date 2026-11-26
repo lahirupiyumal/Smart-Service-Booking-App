@@ -8,26 +8,28 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:auth": "node --test tests/auth/auth.test.cjs",
+    "test:categories": "node --test tests/services/seedCategories.test.cjs"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
     "expo": "~58.0.26",
+    "expo-constants": "~58.0.16",
+    "expo-linking": "~58.0.17",
+    "expo-notifications": "~58.1.9",
+    "expo-router": "~58.0.32",
+    "expo-status-bar": "~58.0.5",
+    "firebase": "^12.19.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-native": "0.88.1",
-    "react-native-web": "~0.21.4",
-    "expo-router": "~58.0.32",
     "react-native-safe-area-context": "~5.11.1",
     "react-native-screens": "~4.30.1",
-    "expo-linking": "~58.0.17",
-    "expo-constants": "~58.0.16",
-    "expo-status-bar": "~58.0.5",
-    "expo-notifications": "~58.1.9",
-    "@react-native-async-storage/async-storage": "2.2.0",
-    "firebase": "^12.6.0"
+    "react-native-web": "~0.21.4"
   },
   "devDependencies": {
-    "typescript": "~5.9.3",
-    "@types/react": "~19.3.0"
+    "@types/react": "~19.3.0",
+    "typescript": "~5.9.3"
   }
 }

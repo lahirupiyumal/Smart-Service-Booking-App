@@ -7,6 +7,7 @@ import { ServiceIcon } from '@/components/common/ServiceIcon';
 
 import { serviceCategories } from '@/features/services/data/categories';
 import { agriculturalCrops, type AgriculturalCropId } from '@/features/services/data/agriculturalCrops';
+import { SeedCategoriesButton } from '@/features/services/components/SeedCategoriesButton';
 
 export default function Home() {
   const { width, fontScale } = useWindowDimensions();
@@ -58,7 +59,7 @@ export default function Home() {
           {searchTerm.length > 0 && <Text accessibilityLiveRegion="polite" style={styles.resultCount}>{resultCount} {resultCount === 1 ? 'subcategory' : 'subcategories'} found</Text>}
         </View>
         <View style={styles.section}><View style={styles.sectionHeading}><View><Text style={styles.kicker}>FIND YOUR SERVICE</Text><Text style={styles.sectionTitle}>{searchTerm ? 'Search results' : activeCategory ? activeCrop && activeCategory.id === 'agricultural' ? `${activeCategory.name} · ${activeCrop.name}` : activeCategory.name : 'What can we help with?'}</Text></View></View>
-          {(activeCategory || searchTerm) && <Pressable accessibilityRole="button" onPress={() => { if (activeCrop && !searchTerm) setSelectedCrop(null); else { setSelectedCategory(null); setSelectedCrop(null); } setQuery(''); }} style={styles.backButton}><Text style={styles.resetText}>{activeCrop && !searchTerm ? '←  Vee & Tea' : '←  All categories'}</Text></Pressable>}
+          {Boolean(activeCategory || searchTerm) && <Pressable accessibilityRole="button" onPress={() => { if (activeCrop && !searchTerm) setSelectedCrop(null); else { setSelectedCategory(null); setSelectedCrop(null); } setQuery(''); }} style={styles.backButton}><Text style={styles.resetText}>{activeCrop && !searchTerm ? '←  Vee & Tea' : '←  All categories'}</Text></Pressable>}
           {!activeCategory && !searchTerm && <View style={[styles.categoryGrid, { gap: mainGap }]}>{serviceCategories.map(category => <Pressable key={category.id} accessibilityRole="button" accessibilityLabel={`View ${category.name} subcategories`} onPress={() => { setSelectedCategory(category.id); setSelectedCrop(null); }} style={({ pressed, hovered }) => [styles.category, styles.mainCategory, compact && styles.compactMainCategory, { width: mainCardWidth, minHeight: mainImageSize + (compact ? captionHeight + 34 : 88) }, hovered && styles.iconButtonHovered, pressed && styles.pressed]}>
             <Image source={category.image} style={[styles.categoryImage, { width: mainImageSize, height: mainImageSize }]} resizeMode="contain" accessible={false} />
             <View style={[styles.mainCaption, compact && { minHeight: captionHeight }]}><Text style={[styles.categoryLabel, compact && styles.compactMainLabel]}>{category.name}</Text></View>
@@ -79,6 +80,7 @@ export default function Home() {
           </View>)}
           {!!searchTerm && resultCount === 0 && <View style={styles.emptyState}><ServiceIcon name="search" size={30} color="#8A98AD" /><Text style={styles.emptyTitle}>No services found</Text><Text style={styles.emptyText}>Try “cleaning”, “tractor” or “car wash”.</Text><Pressable accessibilityRole="button" onPress={() => setQuery('')} style={styles.resetButton}><Text style={styles.resetText}>Back to categories</Text></Pressable></View>}
         </View>
+        {__DEV__ && <SeedCategoriesButton />}
       </View>
     </ScrollView>
   </SafeAreaView>;
